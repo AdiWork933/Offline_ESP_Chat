@@ -20,13 +20,12 @@ It also functions as a **peer-to-peer hub**, allowing an ESP8266 to join the cha
 - ESP32 development board (e.g., ESP32-WROOM-32)  
 - ESP8266 development board (e.g., NodeMCU, Wemos D1 Mini)  
 - USB cable for each board  
-- Computer with **Python** installed  
+- Computer with **Python** installed (For COM communication esp8226)
 
 ---
 
 ## ⚙️ Setup Instructions
 
-### 1️⃣ Software Prerequisites
 - **Arduino IDE** → [Download here](https://www.arduino.cc/en/software)  
 - **ESP32 & ESP8266 Board Packages:**  
   - Go to `File > Preferences` → add the following URLs in **Additional Board Manager URLs**:  
@@ -39,32 +38,46 @@ It also functions as a **peer-to-peer hub**, allowing an ESP8266 to join the cha
 - **Required Libraries (install via Library Manager):**  
   - [WebSockets by Markus Sattler](https://github.com/Links2004/arduinoWebSockets)  
   - ESPAsyncWebServer *(optional dependency, good to have for compatibility)*  
+  
+- **ESP32 Chat Hub Setup**
+  1. Open the ESP32 sketch from this repository in **Arduino IDE**.  
+  2. Adjust Wi-Fi settings if needed:  
+     ```cpp
+     #define AP_SSID "ESPChat"     // Wi-Fi name
+     #define AP_PASS "12345678"    // Wi-Fi password (min. 8 chars)
 
+
+- **ESP8266 Setup**
+  1. Open the ESP8266 sketch from this repository in **Arduino IDE**.  
+  2. Ensure Wi-Fi settings match the ESP32 hub:  
+     ```cpp
+     #define STA_SSID "ESPChat"
+     #define STA_PASS "12345678"
+     #define HUB_IP IPAddress(192,168,4,1)
+
+- **python setup:**
+  - Install python [**click here**](https://www.python.org/downloads/)
+  ```bash
+  pip install pyserial
+  python terminal.py
+  ```
 ---
 
-### 2️⃣ Python Dependencies
-The **custom Serial Monitor GUI** requires:  
+## User Interface
+The **custom Serial Monitor GUI** requires(FOR ESP8226 chat only):  
 
-## ⚙️ Setup Instructions
+<img width="563" height="364" alt="image" src="https://github.com/user-attachments/assets/f1528ccf-3037-4406-8ca7-17f53b22e773" />
 
-### 3️⃣ ESP32 Chat Hub Setup
-1. Open the ESP32 sketch from this repository in **Arduino IDE**.  
-2. Adjust Wi-Fi settings if needed:  
-   ```cpp
-   #define AP_SSID "ESPChat"     // Wi-Fi name
-   #define AP_PASS "12345678"    // Wi-Fi password (min. 8 chars)
+Web ui for **ESP32**:  
+
+<img width="606" height="406" alt="Screenshot 2025-08-17 083846" src="https://github.com/user-attachments/assets/012a69ea-c0de-47e8-a1be-899c29a7cae9" />
 
 
-### 4️⃣ ESP8266 Chat Peer Setup & Usage
+## Coverage Area
 
-## 🔧 ESP8266 Setup
-1. Open the ESP8266 sketch from this repository in **Arduino IDE**.  
-2. Ensure Wi-Fi settings match the ESP32 hub:  
-   ```cpp
-   #define STA_SSID "ESPChat"
-   #define STA_PASS "12345678"
-   #define HUB_IP IPAddress(192,168,4,1)
-   
-```bash
-pip install pyserial
+<img width="606" height="700" alt="WhatsApp Image 2025-08-21 at 11 38 37_7e8dd92f" src="https://github.com/user-attachments/assets/9541197a-2cac-4751-8936-4e83512d261c" />
+
+- coordinate geometry pints
+    - 22.834186,88.352308
+    - 22.835358,88.353849
 
